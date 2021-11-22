@@ -1,18 +1,18 @@
 <div class="container px-5 px-sm-0 mt-3">
   <div class="row">
    
-  <%= render partial: 'books/sidebar', locals:{ user: @user, book: @newbook } %>
+    <%= render partial: 'books/sidebar', locals:{ user: @user, book: @newbook } %>
 
-<div class="col-md-8 offset-md-1">
+    <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
           <tr>
             <td>
-            <%= link_to user_path(@book.user) do %>
-            <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
-            <br><%= @user.name %>
-            <% end %>
+              <%= link_to user_path(@book.user) do %>
+              <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+              <br><%= @user.name %>
+              <% end %>
             </td>
             <td>
               <%= link_to book_path(@book.id) do %>
@@ -20,7 +20,7 @@
               <%end%>
             </td>
             <td><%= @book.body %></td>
-           <% if @book.user_id == current_user.id %>
+          <% if @book.user_id == current_user.id %>
             <td>
               <%= link_to edit_book_path do %>
 				  	    <button type="button" class="btn btn-sm btn-success ">Edit</button>
@@ -28,15 +28,13 @@
 				  	</td>
 				  	<td>
 				  	  <%= link_to book_path, method: :delete, data: { confirm: '削除しますか？' } do %>
-					<button type="button" class="btn btn-sm btn-danger">Destroy</button>
-				  	<%end%>
+					    <button type="button" class="btn btn-sm btn-danger">Destroy</button>
+				  	  <%end%>
            </td>
            <% end %>
           </tr>
         </tbody>
-
-       </table>
-
+      </table>
     </div>
   </div>
 </div>
