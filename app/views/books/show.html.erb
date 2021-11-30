@@ -55,7 +55,8 @@
       <div>
         <% @book.book_comments.each do |book_comment| %>
         <p><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></p>
-        <%= book_comment.user.name %><%= book_comment.comment %>
+        <%= book_comment.user.name %>
+        <%= book_comment.comment %>
         <% end %>
       </div>
       <div>
