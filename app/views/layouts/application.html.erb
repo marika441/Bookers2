@@ -30,9 +30,9 @@
         </div>
       </nav>
     </header>
-    
+
     <% if user_signed_in? %>
-  <div class="search_form">
+  <div class="search_form-group row justify-content-center mt-1">
     <%= form_with url: search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
       <%= f.select :range, options_for_select([['User'], ['Book']]) %>
@@ -41,10 +41,10 @@
     <% end %>
   </div>
 <% end %>
-    
+
     <p class="notice"><%= notice %></p>
     <%= yield %>
-  
+
     <footer>
       <div class="container mt-5">
           <div class="row">
