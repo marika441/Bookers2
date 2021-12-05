@@ -1,0 +1,2 @@
+$('#comment_index_<%= @book.id %>').html("<%= j(render 'book_comments/comment_index', book: @book, comment: @comment) %>");
+$("comment_index").val('');
