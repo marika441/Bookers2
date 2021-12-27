@@ -30,12 +30,12 @@
         </tbody>
         <% end %>
        </table>
-       
-       
        <%= month_calendar books: @books do |date, books| %>
         <%= date.day %>
-        <% end %>
-       
+          <% books.each do |book| %>
+            <div><%= book.title %></div>
+          <% end %>
+       <% end %>
     </div>
   </div>
 </div>
