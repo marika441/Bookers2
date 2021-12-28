@@ -24,18 +24,21 @@
               <%= link_to book_path(book.id) do %>
               <%= book.title %>
               <% end %>
+              <%= book.start_time.strftime("%Y-%m-%d %H:%M") %>
             </td>
             <td><%= book.body %></td>
           </tr>
         </tbody>
         <% end %>
        </table>
-       <%= month_calendar books: @books do |date, books| %>
-        <%= date.day %>
-          <% books.each do |book| %>
-            <div><%= book.title %></div>
-          <% end %>
-       <% end %>
+       <div class= 'calender'>
+            <%= month_calendar events: @books do |date, books| %>
+                <%= date.day %>
+                <% books.each do |book| %>
+                  <div><%= book.title %></div>
+                <% end %>
+            <% end %>
+        </div>
     </div>
   </div>
 </div>
