@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_27_163811) do
+ActiveRecord::Schema.define(version: 2021_12_31_133532) do
 
   create_table "book_comments", force: :cascade do |t|
     t.text "comment"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_12_27_163811) do
     t.integer "impressions_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -71,6 +72,13 @@ ActiveRecord::Schema.define(version: 2021_12_27_163811) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "level_settings", force: :cascade do |t|
+    t.integer "level"
+    t.integer "thresold"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -103,6 +111,8 @@ ActiveRecord::Schema.define(version: 2021_12_27_163811) do
     t.text "profile_image_id"
     t.integer "impressions_count"
     t.datetime "start_time"
+    t.integer "level", default: 1
+    t.integer "experience_point", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
