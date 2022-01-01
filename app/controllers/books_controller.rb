@@ -15,6 +15,16 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+    @user = User.find(current_user.id)
+    totalExp = @user.experience_point
+    totalExp += @book.point.to_i
+    @user.experience_point = totalExp
+    @user.update(experience_point: totalExp)
+    levelSetting = LevelSetting.find_by(level: @user.level + 1);
+      if levelSetting.thresold <= @user.experience_point
+        @user.level = @user.level + 1
+        @user.update(level: @user.level)
+      end
       if @book.save
          flash[:notice]="You have creatad book successfully."
          redirect_to book_path(@book.id)
@@ -61,6 +71,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :point, :user_id, :start_time)
+    params.require(:book).permit(:title, :body, :point, :experience_point, :user_id, :start_time)
   end
 end

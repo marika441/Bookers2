@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_31_133532) do
+ActiveRecord::Schema.define(version: 2021_12_31_163448) do
 
   create_table "book_comments", force: :cascade do |t|
     t.text "comment"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_12_31_133532) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "point"
+    t.integer "experience_point", default: 0
   end
 
   create_table "chats", force: :cascade do |t|
