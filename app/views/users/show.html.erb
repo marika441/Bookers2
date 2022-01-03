@@ -39,6 +39,11 @@
                 <% end %>
             <% end %>
         </div>
+        <% if @user.level > 2 %>
+          <%= image_tag 'usagi.gif', size:'100x100' %>
+        <% elsif @user.level < 2 %>
+          <%= image_tag 'neko.png', size:'100x100' %>
+        <% end %>
     </div>
   </div>
 </div>
